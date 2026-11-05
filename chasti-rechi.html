@@ -551,7 +551,7 @@ function gridSvc(){return '<p class="svc">Служебные</p><div class="opts
 function bindPos(it){$$('.opt').forEach(function(b){b.addEventListener('click',function(){answerPos(it,b.getAttribute('data-a'),b);});});}
 function answerPos(it,k,btn){
   if(busy())return;locked=true;
-  var ok=k===it.a,p=POS[it.a],name=it.w||bare(it.t);
+  var ok=k===it.a,p=POS[it.a],name=it.w||('«'+/\*([^*]+)\*/.exec(it.t)[1]+'» в тексте: '+bare(it.t));
   settle(it,ok,$('#word'));
   if(ok){btn.classList.add('good');
     openSheet(true,'<p><b>'+cap(p.name)+'.</b> '+it.why+'</p><p class="quip">'+it.q+'</p>',streakChip(),renderPlay);}
