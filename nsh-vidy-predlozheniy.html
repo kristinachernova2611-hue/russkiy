@@ -86,8 +86,8 @@ h2{font-size:28px;line-height:1.15;margin:0;font-weight:900}
 .msg{font-size:20px;color:var(--green-d);min-height:24px}
 .small{font-size:18px;color:var(--muted);font-weight:700}
 .noscript{max-width:520px;margin:40px auto;padding:24px;background:#fff;border-radius:24px;font-size:26px;text-align:center;box-shadow:var(--shadow)}
-@media (max-height:600px){.rule p,.rule .ex{font-size:20px}.rule .ex{margin:5px 0;padding:6px 10px}.center{gap:9px}.center>img.kris{width:72px!important}.medal-wrap{width:120px}.medal-wrap img.kris{width:120px!important}.medal-wrap svg{width:56px}h1{font-size:30px}.starrow{font-size:32px}.host img{width:52px}.q{font-size:26px}.sent{padding:12px;margin-bottom:10px}.opts{gap:8px}.top{margin-bottom:2px}.marks .opt{width:80px;height:80px}}
-@media (max-height:700px){.center>img.kris{max-width:96px}}
+@media (max-height:600px){.slot{min-height:58px;margin-bottom:8px;padding:4px}.slot .chip{min-height:48px}.chips{margin-bottom:8px}.host{margin:2px 0 6px}.title-tag{font-size:18px;padding:4px 12px}.rule p,.rule .ex{font-size:20px}.rule .ex{margin:5px 0;padding:6px 10px}.center{gap:9px}.center>img.kris{width:72px!important}.medal-wrap{width:120px}.medal-wrap img.kris{width:120px!important}.medal-wrap svg{width:56px}h1{font-size:30px}.starrow{font-size:32px}.host img{width:52px}.q{font-size:26px}.sent{padding:12px;margin-bottom:10px}.opts{gap:8px}.top{margin-bottom:2px}.marks .opt{width:80px;height:80px}}
+@media (max-height:700px){.center>img.kris{max-width:96px}.rule .ex br{display:none}.rule{padding:12px 14px}.rule p{margin-bottom:6px}}
 @media (min-width:700px){#app{padding-top:28px}.host img{width:84px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -176,7 +176,7 @@ function go(){
   return nextTask();
 }
 function rule1(){
-  render('<span class="title-tag">Вспомним с Крисом</span>'+kimg('explain','',110)+
+  render('<div style="display:flex;align-items:center;gap:10px">'+kimg('explain','',78)+'<span class="title-tag">Вспомним с Крисом</span></div>'+
   '<div class="rule"><p>По <span class="c4">цели высказывания</span> предложения бывают:</p>'+
   '<div class="ex"><span class="c1">повествовательные</span> — сообщают:<br>«Солнце светит.»</div>'+
   '<div class="ex"><span class="c2">вопросительные</span> — спрашивают:<br>«Ты рисуешь?»</div>'+
@@ -185,7 +185,7 @@ function rule1(){
   document.getElementById('b').onclick=function(){S.screen='rule2';go();};
 }
 function rule2(){
-  render('<span class="title-tag">Вспомним с Крисом</span>'+kimg('explain','',110)+
+  render('<div style="display:flex;align-items:center;gap:10px">'+kimg('explain','',78)+'<span class="title-tag">Вспомним с Крисом</span></div>'+
   '<div class="rule"><p>По <span class="c4">интонации</span> предложения бывают:</p>'+
   '<div class="ex"><span class="c5">восклицательные</span> — с сильным чувством, в конце «!»:<br>«Ура, гости пришли!»</div>'+
   '<div class="ex"><span class="c1">невосклицательные</span> — спокойные:<br>«Гости пришли.»</div></div>'+
