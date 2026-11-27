@@ -463,13 +463,13 @@ function renderFinal(){
   $("fSend").onclick = sendResult;
   $("fAgain").onclick = function(){ S = fresh(true); S.theory = THEORY.length - 1; save(); startLevel(0); toast("Задания перемешаны — вперёд!"); };
 }
-function manualCopy(text){
-  $("fManual").innerHTML = "<p class='sub'>Скопируй текст вручную и отправь учителю:</p><textarea id='fTa' readonly></textarea><div style='height:10px'></div>";
+function manualCopy(text, copied){
+  $("fManual").innerHTML = "<p class='sub'>" + (copied ? "Текст уже скопирован. На всякий случай — вот он:" : "Скопируй текст вручную и отправь учителю:") + "</p><textarea id='fTa' readonly></textarea><div style='height:10px'></div>";
   var ta = $("fTa"); ta.value = text; ta.focus(); ta.select();
 }
 function sendResult(){
   var text = resultText();
-  var done = function(){ toast("Результат скопирован — вставь его в сообщение учителю"); manualCopy(text); };
+  var done = function(){ toast("Результат скопирован — вставь его в сообщение учителю"); manualCopy(text, true); };
   try {
     if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, function(){ fallbackCopy(text); }); return; }
   } catch (e) {}
@@ -479,7 +479,7 @@ function fallbackCopy(text){
   var ok = false;
   try { var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0"; document.body.appendChild(ta); ta.select(); ok = document.execCommand("copy"); document.body.removeChild(ta); } catch (e) { ok = false; }
   if (ok) toast("Результат скопирован — вставь его в сообщение учителю"); else toast("Не получилось скопировать автоматически");
-  manualCopy(text);
+  manualCopy(text, ok);
 }
 
 /* ---------- Шпаргалка, тост, конфетти ---------- */
